@@ -6,7 +6,8 @@ namespace Custom_List
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //NewList<int> list = new NewList<int>();
+            //list.Add();
         }
     }
 }
