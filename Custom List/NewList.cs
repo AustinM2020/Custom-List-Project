@@ -11,9 +11,10 @@ namespace Custom_List
         int capacity;
         public int Capacity { get { return capacity; } set { capacity = value; } }
         int index;
-        public int Index { get { return index; } set { index = value; } } 
+        public int Index { get { return index; } set { index = value; } }
         private T[] items;
-        
+        public int startingIndex;
+
         public NewList()
         {
             capacity = 4;
@@ -25,14 +26,14 @@ namespace Custom_List
             set { items[i] = value; }
         }
         public void Add(T itemToAdd)
-        {
-            if (index == capacity)
+        {    
+            if (count == capacity)
             {
                 SwapArrays();
             }
-            items[Index] = itemToAdd;
+            items[index] = itemToAdd;
+            count++;
             index++;
-            count++;          
         }
         private void SwapArrays()
         {
@@ -49,11 +50,28 @@ namespace Custom_List
         }
         public void Remove(T itemToRemove)
         {
-            for (int i = 0; i < capacity; i++)
+            for (int i = 0; i < (capacity - 1); i++)
             {
-                if(itemToRemove.Equals(items[i]))
+                startingIndex = i;
+                if (itemToRemove.Equals(items[i]))
                 {
-
+                    ReassignIndexes();
+                    break;
+                }
+            }
+            count--;
+        }
+        private void ReassignIndexes()
+        {
+            for (int i = startingIndex; i < capacity; i++)
+            {
+                if (i == (capacity - 1))
+                {
+                    items[i] = default(T);
+                }
+                else
+                {
+                    items[i] = items[i + 1];
                 }
             }
         }

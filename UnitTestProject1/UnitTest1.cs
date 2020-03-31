@@ -192,32 +192,7 @@ namespace UnitTestProject1
             NewList<int> list = new NewList<int>();
             int numberRemoved = 45;
             int index = 8;
-            int expected = 50;
-            int actual;
-            //act
-            list.Add(5);
-            list.Add(10);
-            list.Add(15);
-            list.Add(20);
-            list.Add(25);
-            list.Add(30);
-            list.Add(35);
-            list.Add(40);
-            list.Add(45);
-            list.Add(50);
-            list.Add(55); 
-            list.Remove(numberRemoved);
-            actual = list[index];
-            //assert
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void NewList_CheckCount_Remove45()
-        {
-            //arrange
-            NewList<int> list = new NewList<int>();
-            int numberRemoved = 45;
-            int expected = 10;
+            int expected = 55;
             int actual;
             //act
             list.Add(5);
@@ -231,7 +206,35 @@ namespace UnitTestProject1
             list.Add(45);
             list.Add(50);
             list.Add(55);
-            list.Remove(numberRemoved);
+            list.Remove(45);
+            list.Remove(70);
+            list.Remove(30);
+            actual = list[index];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckCount_Remove45()
+        {
+            //arrange
+            NewList<int> list = new NewList<int>();
+            int expected = 8;
+            int actual;
+            //act
+            list.Add(5);
+            list.Add(10);
+            list.Add(15);
+            list.Add(20);
+            list.Add(25);
+            list.Add(30);
+            list.Add(35);
+            list.Add(40);
+            list.Add(45);
+            list.Add(50);
+            list.Add(55);
+            list.Remove(45);
+            list.Remove(20);
+            list.Remove(30);
             actual = list.Count;
             //assert
             Assert.AreEqual(expected, actual);
@@ -242,7 +245,7 @@ namespace UnitTestProject1
             //arrange
             NewList<string> list = new NewList<string>();
             int expected = 2;
-            int actual;            
+            int actual;
             //act
             list.Add("Charles");
             list.Add("King");
