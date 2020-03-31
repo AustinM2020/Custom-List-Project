@@ -34,7 +34,7 @@ namespace Custom_List
             index++;
             count++;          
         }
-        public void SwapArrays()
+        private void SwapArrays()
         {
             T[] tempArr = new T[capacity];
             tempArr = items;
@@ -45,6 +45,16 @@ namespace Custom_List
             for (int i = 0; i < (capacity / 2); i++)
             {
                 items[i] = items2[i];
+            }
+        }
+        public void Remove(T itemToRemove)
+        {
+            for (int i = 0; i < capacity; i++)
+            {
+                if(itemToRemove.Equals(items[i]))
+                {
+
+                }
             }
         }
     }

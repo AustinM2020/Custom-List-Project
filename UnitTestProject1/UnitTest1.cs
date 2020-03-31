@@ -6,7 +6,7 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTest1
     {
-        
+
         [TestMethod]
         public void NewList_CheckCount_AddPositiveInt()
         {
@@ -107,7 +107,7 @@ namespace UnitTestProject1
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void NewList_CheckOrder_Index2()
+        public void NewList_CheckOrder_Index10()
         {
             //arrange
             NewList<int> list = new NewList<int>();
@@ -148,6 +148,109 @@ namespace UnitTestProject1
             //assert
             Assert.AreEqual(expected, actual);
         }
-
+        [TestMethod]
+        public void NewList_CheckRemoved_Index2()
+        {
+            //arrange
+            NewList<int> list = new NewList<int>();
+            int numberRemoved = 15;
+            int index = 2;
+            int expected = 20;
+            int actual;
+            //act
+            list.Add(5);
+            list.Add(10);
+            list.Add(15);
+            list.Add(20);
+            list.Remove(numberRemoved);
+            actual = list[index];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckCount_Remove15()
+        {
+            //arrange
+            NewList<int> list = new NewList<int>();
+            int numberRemoved = 15;
+            int expected = 3;
+            int actual;
+            //act
+            list.Add(5);
+            list.Add(10);
+            list.Add(15);
+            list.Add(20);
+            list.Remove(numberRemoved);
+            actual = list.Count;
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckOrder_Remove45()
+        {
+            //arrange
+            NewList<int> list = new NewList<int>();
+            int numberRemoved = 45;
+            int index = 8;
+            int expected = 50;
+            int actual;
+            //act
+            list.Add(5);
+            list.Add(10);
+            list.Add(15);
+            list.Add(20);
+            list.Add(25);
+            list.Add(30);
+            list.Add(35);
+            list.Add(40);
+            list.Add(45);
+            list.Add(50);
+            list.Add(55); 
+            list.Remove(numberRemoved);
+            actual = list[index];
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckCount_Remove45()
+        {
+            //arrange
+            NewList<int> list = new NewList<int>();
+            int numberRemoved = 45;
+            int expected = 10;
+            int actual;
+            //act
+            list.Add(5);
+            list.Add(10);
+            list.Add(15);
+            list.Add(20);
+            list.Add(25);
+            list.Add(30);
+            list.Add(35);
+            list.Add(40);
+            list.Add(45);
+            list.Add(50);
+            list.Add(55);
+            list.Remove(numberRemoved);
+            actual = list.Count;
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckCount_RemoveString()
+        {
+            //arrange
+            NewList<string> list = new NewList<string>();
+            int expected = 2;
+            int actual;            
+            //act
+            list.Add("Charles");
+            list.Add("King");
+            list.Add("Mangos");
+            list.Remove("King");
+            actual = list.Count;
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
