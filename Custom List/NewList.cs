@@ -7,11 +7,11 @@ namespace Custom_List
     public class NewList<T>
     {
         int count;
-        public int Count { get; set; }
+        public int Count { get { return count; } set { count = value; } }
         int capacity;
-        public int Capacity { get; set; }
+        public int Capacity { get { return capacity; } set { capacity = value; } }
         int index;
-        public int Index { get; set; }
+        public int Index { get { return index; } set { index = value; } } 
         private T[] items;
         
         public NewList()
@@ -26,16 +26,26 @@ namespace Custom_List
         }
         public void Add(T itemToAdd)
         {
-            if (Index == capacity)
-            {               
-                T[] tempArr = new T[capacity];
-                T[] items2 = new T[capacity * 2];
-                tempArr = items;
+            if (index == capacity)
+            {
+                SwapArrays();
             }
             items[Index] = itemToAdd;
-            Index++;
-            Count++;
-           
+            index++;
+            count++;          
+        }
+        public void SwapArrays()
+        {
+            T[] tempArr = new T[capacity];
+            tempArr = items;
+            capacity = capacity * 2;
+            T[] items2 = new T[capacity];
+            items = items2;
+            items2 = tempArr;
+            for (int i = 0; i < (capacity / 2); i++)
+            {
+                items[i] = items2[i];
+            }
         }
     }
 }

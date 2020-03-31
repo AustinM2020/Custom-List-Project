@@ -70,7 +70,7 @@ namespace UnitTestProject1
         {
             //arrange
             NewList<int> list = new NewList<int>();
-            int expected = 8;
+            int expected = 16;
             int actual;
             //act
             list.Add(5);
@@ -78,10 +78,17 @@ namespace UnitTestProject1
             list.Add(15);
             list.Add(20);
             list.Add(25);
+            list.Add(30);
+            list.Add(35);
+            list.Add(40);
+            list.Add(45);
+            list.Add(50);
+            list.Add(55);
             actual = list.Capacity;
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void NewList_CheckOrder_Index0()
         {
             //arrange
@@ -99,12 +106,13 @@ namespace UnitTestProject1
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void NewList_CheckOrder_Index2()
         {
             //arrange
             NewList<int> list = new NewList<int>();
-            int expected = 15;
-            int index = 2;
+            int expected = 55;
+            int index = 10;
             int actual;
             //act
             list.Add(5);
@@ -112,10 +120,17 @@ namespace UnitTestProject1
             list.Add(15);
             list.Add(20);
             list.Add(25);
+            list.Add(30);
+            list.Add(35);
+            list.Add(40);
+            list.Add(45);
+            list.Add(50);
+            list.Add(55);
             actual = list[index];
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void NewList_CheckOrder_Index4()
         {
             //arrange
