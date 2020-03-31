@@ -26,13 +26,13 @@ namespace Custom_List
             set { items[i] = value; }
         }
         public void Add(T itemToAdd)
-        {    
+        {
+            count++;           
             if (count == capacity)
             {
                 SwapArrays();
             }
             items[index] = itemToAdd;
-            count++;
             index++;
         }
         private void SwapArrays()
@@ -60,6 +60,7 @@ namespace Custom_List
                 }
             }
             count--;
+            index--;
         }
         private void ReassignIndexes()
         {
@@ -74,6 +75,22 @@ namespace Custom_List
                     items[i] = items[i + 1];
                 }
             }
+        }
+        public override string ToString()
+        {
+            string str = null;
+            for (int i = 0; i < count; i++)
+            {
+                if(i == count - 1)
+                {
+                    str += items[i];
+                }
+                else
+                {
+                    str += items[i] + ", ";
+                }
+            }
+            return str;
         }
     }
 }

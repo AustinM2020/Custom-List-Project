@@ -255,5 +255,59 @@ namespace UnitTestProject1
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void NewList_CheckString_IntsToString()
+        {
+            //arrange
+            NewList<int> list = new NewList<int>();
+            string expected = "5, 10, 15";
+            string actual;
+            //act
+            list.Add(5);
+            list.Add(10);
+            list.Add(15);
+            actual = list.ToString();
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckString_StringToString()
+        {
+            //arrange
+            NewList<string> list = new NewList<string>();
+            string expected = "Charles, King, Mangos";
+            string actual;
+            //act
+            list.Add("Charles");
+            list.Add("King");
+            list.Add("Mangos");
+            actual = list.ToString();
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckString_IntsToStringRemoved()
+        {
+            //arrange
+            NewList<int> list = new NewList<int>();
+            string expected = "5, 15, 20, 25, 30, 40, 45, 10";
+            string actual;
+            //act
+            list.Add(5);
+            list.Add(10);
+            list.Add(15);
+            list.Add(20);
+            list.Add(25);
+            list.Add(30);
+            list.Add(35);
+            list.Add(40);
+            list.Remove(35);
+            list.Add(45);
+            list.Remove(10);
+            list.Add(10);
+            actual = list.ToString();
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
