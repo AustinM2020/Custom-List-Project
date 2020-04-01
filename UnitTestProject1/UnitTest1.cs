@@ -309,5 +309,107 @@ namespace UnitTestProject1
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void NewList_CheckCombinedList_Operator()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            string expected = "1, 3, 5, 2, 4, 6";
+            string actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            two.Add(2);
+            two.Add(4);
+            two.Add(6);
+            NewList<int> three = one + two;
+            actual = three.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckListOne_Count()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            int expected = 3;
+            int actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            two.Add(2);
+            two.Add(4);
+            two.Add(6);
+            actual = one.Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckListThree_Count()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            int expected = 6;
+            int actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            two.Add(2);
+            two.Add(4);
+            two.Add(6);
+            NewList<int> three = one + two;
+            actual = three.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckCombinedList2_Operator()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            string expected = "1, 3, 5, 7, 9, 2, 4, 6, 8, 10";
+            string actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            one.Add(7);
+            one.Add(9);
+            two.Add(2);
+            two.Add(4);
+            two.Add(6);
+            two.Add(8);
+            two.Add(10);
+            NewList<int> three = one + two;
+            actual = three.ToString();
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_CheckCombinedList3_Operator()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            string expected = "1, 3, 5, 9, 2, 4, 6, 10";
+            string actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            one.Add(7);
+            one.Add(9);
+            two.Add(2);
+            two.Add(4);
+            two.Add(6);
+            two.Add(8);
+            two.Add(10);
+            one.Remove(7);
+            two.Remove(8);
+            NewList<int> three = one + two;
+            actual = three.ToString();
+            
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

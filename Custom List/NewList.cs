@@ -92,5 +92,18 @@ namespace Custom_List
             }
             return str;
         }
+        public static NewList<T> operator +(NewList<T> l1, NewList<T> l2)
+        {
+            NewList<T> list3 = new NewList<T>();
+            for (int i = 0; i < l1.count; i++)
+            {
+                list3.Add(l1[i]);
+            }
+            for (int i = 0; i < l2.count; i++)
+            {
+                list3.Add(l2[i]);
+            }
+            return list3;     
+        }
     }
 }
