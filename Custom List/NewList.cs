@@ -105,5 +105,26 @@ namespace Custom_List
             }
             return list3;     
         }
+        public static NewList<T> operator -(NewList<T> l1, NewList<T> l2)
+        {
+            NewList<T> list3 = new NewList<T>();
+            for (int i = 0; i < l1.count; i++)
+            {
+                list3.Add(l1[i]);
+            }
+            for (int i = 0; i < l1.count; i++)
+            {
+                for (int j = 0; j < l2.count; j++)
+                {
+                    if (list3[i].Equals(l2[j]))
+                    {  
+                        list3.Remove(list3[i]);
+                        i = -1;
+                        break;   
+                    }
+                } 
+            }
+            return list3;
+        }
     }
 }

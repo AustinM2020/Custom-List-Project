@@ -411,5 +411,125 @@ namespace UnitTestProject1
             
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void NewList_SubtractedList_Operator()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            string expected = "3, 5";
+            string actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            two.Add(2);
+            two.Add(1);
+            two.Add(6);
+            NewList<int> three = one - two;
+            actual = three.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_SubtractedList2_Operator()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            string expected = "5";
+            string actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            one.Add(6);
+            one.Add(8);
+
+            two.Add(2);
+            two.Add(1);
+            two.Add(6);
+            two.Add(11);
+            two.Add(7);
+            two.Add(8);
+            two.Add(3);
+            NewList<int> three = one - two;
+            actual = three.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_SubtractedListOneCount_Operator()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            int expected = 5;
+            int actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            one.Add(6);
+            one.Add(8);
+            two.Add(2);
+            two.Add(1);
+            two.Add(6);
+            two.Add(11);
+            two.Add(7);
+            two.Add(8);
+            two.Add(3);
+            NewList<int> three = one - two;
+            actual = one.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_SubtractedListTwoCount_Operator()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            int expected = 7;
+            int actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            one.Add(6);
+            one.Add(8);
+            two.Add(2);
+            two.Add(1);
+            two.Add(6);
+            two.Add(11);
+            two.Add(7);
+            two.Add(8);
+            two.Add(3);
+            NewList<int> three = one - two;
+            actual = two.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_SubtractedListThreeCount_Operator()
+        {
+            NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+            int expected = 1;
+            int actual;
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            one.Add(6);
+            one.Add(8);
+            two.Add(2);
+            two.Add(1);
+            two.Add(6);
+            two.Add(11);
+            two.Add(7);
+            two.Add(8);
+            two.Add(3);
+            NewList<int> three = one - two;
+            actual = three.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
