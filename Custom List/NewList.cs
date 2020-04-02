@@ -13,7 +13,7 @@ namespace Custom_List
         public int Capacity { get { return capacity; } set { capacity = value; } }
         int index;
         private T[] items;
-        public int startingIndex;
+        private int startingIndex;
 
         public NewList()
         {
@@ -27,7 +27,7 @@ namespace Custom_List
         }
         public void Add(T itemToAdd)
         {
-            count++;           
+            count++;
             if (count == capacity)
             {
                 SwapArrays();
@@ -50,7 +50,7 @@ namespace Custom_List
         }
         public bool Remove(T itemToRemove)
         {
-            for (int i = 0; i < (capacity - 1); i++)
+            for (int i = 0; i < count; i++)
             {
                 startingIndex = i;
                 if (itemToRemove.Equals(items[i]))
@@ -82,7 +82,7 @@ namespace Custom_List
             string str = null;
             for (int i = 0; i < count; i++)
             {
-                if(i == count - 1)
+                if (i == count - 1)
                 {
                     str += items[i];
                 }
@@ -111,7 +111,7 @@ namespace Custom_List
             {
                 list3.Add(l2[i]);
             }
-            return list3;     
+            return list3;
         }
         public NewList<T> Zip(NewList<T> l2)
         {
@@ -119,27 +119,27 @@ namespace Custom_List
             int index1 = 0;
             int index2 = 0;
             for (int i = 1; i <= (count + l2.count); i++)
-            { 
-                if(((i % 2) == 0) && index2 < l2.count)
+            {
+                if (((i % 2) == 0) && index2 < l2.count)
                 {
                     list3.Add(l2[index2]);
                     index2++;
                 }
-                else if(((i % 2) > 0) && index1 < count)
+                else if (((i % 2) > 0) && index1 < count)
                 {
                     list3.Add(items[index1]);
                     index1++;
                 }
                 else
                 {
-                    if(index2 < l2.count)
+                    if (index2 < l2.count)
                     {
                         for (int j = index2; j < l2.count; j++)
                         {
                             list3.Add(l2[j]);
                         }
                     }
-                    else if(index1 < count)
+                    else if (index1 < count)
                     {
                         for (int j = index1; j < count; j++)
                         {
@@ -172,5 +172,5 @@ namespace Custom_List
             }
             return list3;
         }
-    }
+    }  
 }

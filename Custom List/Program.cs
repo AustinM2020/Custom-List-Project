@@ -9,17 +9,17 @@ namespace Custom_List
             //arrange
             NewList<int> list = new NewList<int>();
             //act
-            list.Add(5);
+            list.Add(1);
+            list.Add(8);
+            list.Add(4);
+            list.Add(7);
             list.Add(10);
-            list.Add(15);
-            list.Add(20);
-            list.Add(25);
-            list.Add(30);
-            list.Add(35);
-            list.Add(40);
-            list.Add(45);
-            list.Add(50);
-            list.Add(55);
+            list.Add(3);
+            list.Add(2);
+            list.Add(11);
+            list.Add(9);
+            list.Add(5);
+            list.Add(6);
 
             foreach (int nums in list)
             {
