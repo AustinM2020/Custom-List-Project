@@ -48,7 +48,7 @@ namespace Custom_List
                 items[i] = items2[i];
             }
         }
-        public void Remove(T itemToRemove)
+        public bool Remove(T itemToRemove)
         {
             for (int i = 0; i < (capacity - 1); i++)
             {
@@ -56,11 +56,12 @@ namespace Custom_List
                 if (itemToRemove.Equals(items[i]))
                 {
                     ReassignIndexes();
-                    break;
+                    count--;
+                    index--;
+                    return true;
                 }
             }
-            count--;
-            index--;
+            return false;
         }
         private void ReassignIndexes()
         {
@@ -92,7 +93,6 @@ namespace Custom_List
             }
             return str;
         }
-
         public IEnumerator GetEnumerator()
         {
             for (int i = 0; i < count; i++)
@@ -100,7 +100,6 @@ namespace Custom_List
                 yield return items[i];
             }
         }
-
         public static NewList<T> operator +(NewList<T> l1, NewList<T> l2)
         {
             NewList<T> list3 = new NewList<T>();
@@ -113,27 +112,6 @@ namespace Custom_List
                 list3.Add(l2[i]);
             }
             return list3;     
-        }
-        public static NewList<T> operator -(NewList<T> l1, NewList<T> l2)
-        {
-            NewList<T> list3 = new NewList<T>();
-            for (int i = 0; i < l1.count; i++)
-            {
-                list3.Add(l1[i]);
-            }
-            for (int i = 0; i < l1.count; i++)
-            {
-                for (int j = 0; j < l2.count; j++)
-                {
-                    if (list3[i].Equals(l2[j]))
-                    {  
-                        list3.Remove(list3[i]);
-                        i = -1;
-                        break;   
-                    }
-                } 
-            }
-            return list3;
         }
         public NewList<T> Zip(NewList<T> l2)
         {
@@ -169,6 +147,27 @@ namespace Custom_List
                         }
                     }
                     break;
+                }
+            }
+            return list3;
+        }
+        public static NewList<T> operator -(NewList<T> l1, NewList<T> l2)
+        {
+            NewList<T> list3 = new NewList<T>();
+            for (int i = 0; i < l1.count; i++)
+            {
+                list3.Add(l1[i]);
+            }
+            for (int i = 0; i < l1.count; i++)
+            {
+                for (int j = 0; j < l2.count; j++)
+                {
+                    if (list3[i].Equals(l2[j]))
+                    {
+                        list3.Remove(list3[i]);
+                        i = -1;
+                        break;
+                    }
                 }
             }
             return list3;

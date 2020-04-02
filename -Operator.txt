@@ -1,0 +1,31 @@
+C#
+public static List<T> operator -(List<T> l1, List<T> l2)
+
+Parameters:
+List<T>, List<T>
+Requires 2 List<T> so that one list can be subtracted from the other.
+
+Returns:
+List<T>
+A new List<T> is returned that has the items that werent removed from l1.
+
+Example:
+	    NewList<int> one = new NewList<int>();
+            NewList<int> two = new NewList<int>();
+
+            one.Add(1);
+            one.Add(3);
+            one.Add(5);
+            two.Add(2);
+            two.Add(1);
+            two.Add(6);
+            NewList<int> three = one - two;
+            
+            foreach(int num in three)
+            {
+                Console.WriteLine(num);
+            }
+            Console.ReadLine();
+	    
+	    Output: 3
+		    5
