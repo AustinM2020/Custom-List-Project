@@ -1,17 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Custom_List
 {
-    public class NewList<T>
+    public class NewList<T> : IEnumerable
     {
         int count;
         public int Count { get { return count; } set { count = value; } }
         int capacity;
         public int Capacity { get { return capacity; } set { capacity = value; } }
         int index;
-        public int Index { get { return index; } set { index = value; } }
         private T[] items;
         public int startingIndex;
 
@@ -92,6 +92,15 @@ namespace Custom_List
             }
             return str;
         }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return items[i];
+            }
+        }
+
         public static NewList<T> operator +(NewList<T> l1, NewList<T> l2)
         {
             NewList<T> list3 = new NewList<T>();
@@ -123,6 +132,44 @@ namespace Custom_List
                         break;   
                     }
                 } 
+            }
+            return list3;
+        }
+        public NewList<T> Zip(NewList<T> l2)
+        {
+            NewList<T> list3 = new NewList<T>();
+            int index1 = 0;
+            int index2 = 0;
+            for (int i = 1; i <= (count + l2.count); i++)
+            { 
+                if(((i % 2) == 0) && index2 < l2.count)
+                {
+                    list3.Add(l2[index2]);
+                    index2++;
+                }
+                else if(((i % 2) > 0) && index1 < count)
+                {
+                    list3.Add(items[index1]);
+                    index1++;
+                }
+                else
+                {
+                    if(index2 < l2.count)
+                    {
+                        for (int j = index2; j < l2.count; j++)
+                        {
+                            list3.Add(l2[j]);
+                        }
+                    }
+                    else if(index1 < count)
+                    {
+                        for (int j = index1; j < count; j++)
+                        {
+                            list3.Add(items[j]);
+                        }
+                    }
+                    break;
+                }
             }
             return list3;
         }

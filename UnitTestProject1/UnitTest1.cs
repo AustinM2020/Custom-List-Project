@@ -408,7 +408,7 @@ namespace UnitTestProject1
             two.Remove(8);
             NewList<int> three = one + two;
             actual = three.ToString();
-            
+
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
@@ -528,6 +528,117 @@ namespace UnitTestProject1
             two.Add(3);
             NewList<int> three = one - two;
             actual = three.Count;
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_ZipLists_OddsEvens()
+        {
+            NewList<int> odd = new NewList<int>();
+            NewList<int> even = new NewList<int>();
+            string expected = "1, 2, 3, 4, 5, 6";
+            string actual;
+
+            odd.Add(1);
+            odd.Add(3);
+            odd.Add(5);
+            even.Add(2);
+            even.Add(4);
+            even.Add(6);
+            NewList<int> three = odd.Zip(even);
+            actual = three.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_ZipLists_EvensOdds()
+        {
+            NewList<int> odd = new NewList<int>();
+            NewList<int> even = new NewList<int>();
+            string expected = "2, 1, 4, 3, 6, 5";
+            string actual;
+
+            odd.Add(1);
+            odd.Add(3);
+            odd.Add(5);
+            even.Add(2);
+            even.Add(4);
+            even.Add(6);
+            NewList<int> three = even.Zip(odd);
+            actual = three.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_ZipLists_EvenListIsLonger()
+        {
+            NewList<int> odd = new NewList<int>();
+            NewList<int> even = new NewList<int>();
+            string expected = "1, 2, 3, 4, 5, 6, 8, 10, 12, 14";
+            string actual;
+
+            odd.Add(1);
+            odd.Add(3);
+            odd.Add(5);
+            even.Add(2);
+            even.Add(4);
+            even.Add(6);
+            even.Add(8);
+            even.Add(10);
+            even.Add(12);
+            even.Add(14);
+            NewList<int> three = odd.Zip(even);
+            actual = three.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_ZipLists_OddListIsLonger()
+        {
+            NewList<int> odd = new NewList<int>();
+            NewList<int> even = new NewList<int>();
+            string expected = "1, 2, 3, 4, 5, 6, 7, 9, 11, 13";
+            string actual;
+
+            odd.Add(1);
+            odd.Add(3);
+            odd.Add(5);
+            odd.Add(7);
+            odd.Add(9);
+            odd.Add(11);
+            odd.Add(13);
+            even.Add(2);
+            even.Add(4);
+            even.Add(6);
+            NewList<int> three = odd.Zip(even);
+            actual = three.ToString();
+
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void NewList_ZipLists_LongerLists()
+        {
+            NewList<int> odd = new NewList<int>();
+            NewList<int> even = new NewList<int>();
+            string expected = "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14";
+            string actual;
+
+            odd.Add(1);
+            odd.Add(3);
+            odd.Add(5);
+            odd.Add(7);
+            odd.Add(9);
+            odd.Add(11);
+            odd.Add(13);
+            even.Add(2);
+            even.Add(4);
+            even.Add(6);
+            even.Add(8);
+            even.Add(10);
+            even.Add(12);
+            even.Add(14);
+            NewList<int> three = odd.Zip(even);
+            actual = three.ToString();
 
             Assert.AreEqual(expected, actual);
         }
